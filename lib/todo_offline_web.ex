@@ -85,6 +85,7 @@ defmodule TodoOfflineWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import TodoOfflineWeb.CoreComponents
+      import TodoOfflineWeb.CustomComponents
       import TodoOfflineWeb.Gettext
 
       # Shortcut for generating JS commands
