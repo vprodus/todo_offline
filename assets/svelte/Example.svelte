@@ -2,7 +2,7 @@
   import { openedMenuId } from "$stores/clientOnlyState";
 
   import ThemeManager from "./ThemeManager.svelte";
-  import ThemeButton from "./ThemeButton.svelte";
+  import ThemeChangeMenu from "./ThemeChangeMenu.svelte";
   import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
 
   export let number = 1;
@@ -11,7 +11,7 @@
 </script>
 
 <ThemeManager />
-<ThemeButton {menuClass} />
+<ThemeChangeMenu {menuClass} />
 <ClickOutsideClassHandler
   className={menuClass}
   callbackFunction={() => ($openedMenuId = "")}

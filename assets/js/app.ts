@@ -7,6 +7,7 @@ import {LiveSocket} from "phoenix_live_view"
 import { initTopBar } from "$lib/topbar/initTopBar"
 import {getHooks} from "live_svelte"
 import * as Components from "../svelte/**/*.svelte"
+import { useRegisterServiceWorker } from "$lib/hooks/useRegisterServiceWorker";
 
 declare global {
   interface Window {
@@ -14,6 +15,7 @@ declare global {
   }
 }
 
+useRegisterServiceWorker("/sw.js");
 initTopBar();
 
 let csrfToken = document.querySelector("meta[name='csrf-token']")?.getAttribute("content")
