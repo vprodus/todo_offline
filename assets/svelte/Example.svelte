@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   export let number = 1;
-  let amount = 1;
+  let amount: number = 1;
 </script>
 
 <h1 class="flex justify-center mb-10 font-bold">Svelte</h1>

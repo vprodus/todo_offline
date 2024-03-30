@@ -1,10 +1,13 @@
 {
-    "compilerOptions": {
-        "types": ["node"],
-        "baseUrl": ".",
-        "paths": {
-            "$lib": ["svelte"],
-            "$lib/*": ["svelte/*"]
-        }
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "$components/*": ["svelte/*"],
+      "$lib/*": ["lib/*"],
+      "$stores/*": ["stores/*"]
     }
+  }
 }

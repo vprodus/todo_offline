@@ -1,5 +1,9 @@
 const esbuild = require("esbuild")
 const sveltePlugin = require("esbuild-svelte")
+const stylePlugin = require("esbuild-style-plugin")
+const postcssImport = require("postcss-import")
+const tailwind = require("tailwindcss")
+const autoprefixer = require("autoprefixer")
 const importGlobPlugin = require("esbuild-plugin-import-glob").default
 const sveltePreprocess = require("svelte-preprocess")
 
@@ -8,7 +12,7 @@ const watch = args.includes("--watch")
 const deploy = args.includes("--deploy")
 
 let optsClient = {
-    entryPoints: ["js/app.js"],
+    entryPoints: ["js/app.ts"],
     bundle: true,
     minify: deploy,
     target: "es2017",
@@ -19,6 +23,11 @@ let optsClient = {
     watch,
     tsconfig: "./tsconfig.json",
     plugins: [
+        stylePlugin({
+          postcss: {
+            plugins: [postcssImport, tailwind, autoprefixer],
+          },
+        }),
         importGlobPlugin(),
         sveltePlugin({
             preprocess: sveltePreprocess(),
