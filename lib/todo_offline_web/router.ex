@@ -17,12 +17,6 @@ defmodule TodoOfflineWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", TodoOfflineWeb do
-    pipe_through :browser
-
-    get "/", PageController, :home
-  end
-
   # Other scopes may use custom stacks.
   # scope "/api", TodoOfflineWeb do
   #   pipe_through :api
@@ -58,6 +52,7 @@ defmodule TodoOfflineWeb.Router do
       live "/users/reset_password/:token", UserResetPasswordLive, :edit
     end
 
+    get "/", HomeController, :index
     post "/users/log_in", UserSessionController, :create
   end
 
