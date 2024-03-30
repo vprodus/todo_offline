@@ -1,36 +1,36 @@
 <script lang="ts">
+  import { openedMenuId } from "$stores/clientOnlyState";
+
+  import ThemeManager from "./ThemeManager.svelte";
+  import ThemeButton from "./ThemeButton.svelte";
+  import ClickOutsideClassHandler from "./ClickOutsideClassHandler.svelte";
+
   export let number = 1;
+  const menuClass = "menu-class";
   let amount: number = 1;
 </script>
+
+<ThemeManager />
+<ThemeButton {menuClass} />
+<ClickOutsideClassHandler
+  className={menuClass}
+  callbackFunction={() => ($openedMenuId = "")}
+/>
 
 <h1 class="flex justify-center mb-10 font-bold">Svelte</h1>
 
 <div class="flex flex-col justify-center items-center gap-4">
   <div class="flex flex-row items-center justify-center gap-10">
-    <button class="minus" on:click={() => (number -= amount)}>-{amount}</button>
+    <button class="btn btn-accent" on:click={() => (number -= amount)}
+      >-{amount}</button
+    >
     <span class="text-xl">{number}</span>
-    <button class="plus" on:click={() => (number += amount)}>+{amount}</button>
+    <button class="btn btn-secondary" on:click={() => (number += amount)}
+      >+{amount}</button
+    >
   </div>
   <label>
     Amount:
     <input type="number" class="rounded" bind:value={amount} min="1" />
   </label>
 </div>
-
-<style>
-  button {
-    background-color: black;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    font-weight: bold;
-  }
-
-  button.minus {
-    background-color: red;
-  }
-
-  button.plus {
-    background-color: rgb(0, 190, 0);
-  }
-</style>

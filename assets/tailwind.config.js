@@ -1,6 +1,7 @@
 // See the Tailwind configuration guide for advanced usage
 // https://tailwindcss.com/docs/configuration
 
+const defaultTheme = require("tailwindcss/defaultTheme")
 const plugin = require("tailwindcss/plugin")
 const fs = require("fs")
 const path = require("path")
@@ -14,6 +15,10 @@ module.exports = {
     "../lib/todo_offline_web/**/*.*ex"
   ],
   theme: {
+    screens: {
+      xs: "384px",
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         brand: "#FD4F00",
@@ -22,6 +27,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/forms"),
+    require("daisyui"),
     // Allows prefixing tailwind classes with LiveView classes to add rules
     // only when LiveView classes are applied, for example:
     //
