@@ -89,6 +89,7 @@ defmodule TodoOfflineWeb do
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
+      use LiveSvelte.Components
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())

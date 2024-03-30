@@ -25,7 +25,7 @@ config :todo_offline, TodoOfflineWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "Vkm8RSbfCnzjOiHl6up1v0NP5IJurRIrVjsjloxOoQAmna3tg0XLuiYvk6q7n6dH",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:todo_offline, ~w(--sourcemap=inline --watch)]},
+    node: ["build.js", "--watch", cd: Path.expand("../assets", __DIR__)],
     tailwind: {Tailwind, :install_and_run, [:todo_offline, ~w(--watch)]}
   ]
 

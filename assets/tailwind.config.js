@@ -7,7 +7,9 @@ const path = require("path")
 
 module.exports = {
   content: [
-    "./js/**/*.js",
+    "./js/**/*.{js,ts,svelte}",
+    "./lib/**/*.{js,ts,svelte}",
+    "./svelte/**/*.{js,ts,svelte}",
     "../lib/todo_offline_web.ex",
     "../lib/todo_offline_web/**/*.*ex"
   ],
