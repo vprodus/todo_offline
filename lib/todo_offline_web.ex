@@ -17,7 +17,27 @@ defmodule TodoOfflineWeb do
   those modules here.
   """
 
-  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt sw.js sw.config.js)
+  def static_paths, do: ~w(
+    assets
+    fonts
+    images
+    favicon.ico
+    robots.txt
+    sw.js
+    sw.config.js
+    android-chrome-192x192.png
+    android-chrome-512x512.png
+    apple-touch-icon.png
+    browserconfig.xml
+    favicon-16x16.png
+    favicon-32x32.png
+    mstile-150x150.png
+    mstile-70x70.png
+    mstile-310x310.png
+    og.png
+    safari-pinned-tab.svg
+    site.webmanifest
+  )
 
   def router do
     quote do
