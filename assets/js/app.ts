@@ -15,6 +15,7 @@ declare global {
   }
 }
 
+
 useRegisterServiceWorker("/sw.js");
 initTopBar();
 

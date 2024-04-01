@@ -1,5 +1,21 @@
+<script lang="ts" context="module">
+  import { init, addMessages, getLocaleFromNavigator } from "svelte-i18n";
+
+  import en from "./locales/en.json";
+  import fr from "./locales/fr.json";
+
+  addMessages("en", en);
+  addMessages("fr", fr);
+
+  init({
+    fallbackLocale: "fr",
+    initialLocale: getLocaleFromNavigator(),
+  });
+</script>
+
 <script lang="ts">
   import { Pane, Splitpanes } from "svelte-splitpanes";
+  import { t } from "svelte-i18n";
   import GitHubSvgIcon from "$lib/svg-icons/GitHubSvgIcon.svelte";
   import { openedMenuId } from "$stores/clientOnlyState";
 
@@ -33,6 +49,10 @@
       <h1 class="text-5xl font-black my-5">
         Local-First LiveView Svelte ToDo App
       </h1>
+      <header>
+        <h1>{$t("greeting")}</h1>
+        <p>{$t("welcome")}</p>
+      </header>
 
       <p>
         This to-do app is a demo of an installable
