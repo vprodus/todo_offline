@@ -6,12 +6,22 @@ defmodule TodoOfflineWeb.UserRegistrationLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
+    <.sticky_header>
+      <.Back showTopBarOnNav href={~p"/"} />
+    </.sticky_header>
+
+    <.user_auth_layout>
       <.header class="text-center">
         Register for an account
         <:subtitle>
           Already registered?
-          <.link navigate={~p"/users/log_in"} class="font-semibold text-brand hover:underline">
+          <.link
+            navigate={~p"/users/log_in"}
+            class={[
+              "font-semibold underline underline-offset-4 hover:no-underline rounded",
+              "focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
+            ]}
+          >
             Sign in
           </.link>
           to your account now.
@@ -31,14 +41,20 @@ defmodule TodoOfflineWeb.UserRegistrationLive do
           Oops, something went wrong! Please check the errors below.
         </.error>
 
-        <.input field={@form[:email]} type="email" label="Email" required />
-        <.input field={@form[:password]} type="password" label="Password" required />
+        <.input field={@form[:email]} type="email" label="Email" required autocomplete="username" />
+        <.input
+          field={@form[:password]}
+          type="password"
+          label="Password"
+          required
+          autocomplete="new-password"
+        />
 
         <:actions>
           <.button phx-disable-with="Creating account..." class="w-full">Create an account</.button>
         </:actions>
       </.simple_form>
-    </div>
+    </.user_auth_layout>
     """
   end
 

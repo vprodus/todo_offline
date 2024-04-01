@@ -3,12 +3,21 @@ defmodule TodoOfflineWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
+    <.sticky_header>
+      <.Back showTopBarOnNav href={~p"/"} />
+    </.sticky_header>
+    <.user_auth_layout>
       <.header class="text-center">
         Sign in to account
         <:subtitle>
           Don't have an account?
-          <.link navigate={~p"/users/register"} class="font-semibold text-brand hover:underline">
+          <.link
+            navigate={~p"/users/register"}
+            class={[
+              "font-semibold underline underline-offset-4 hover:no-underline rounded",
+              "focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
+            ]}
+          >
             Sign up
           </.link>
           for an account now.
@@ -16,12 +25,31 @@ defmodule TodoOfflineWeb.UserLoginLive do
       </.header>
 
       <.simple_form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
-        <.input field={@form[:email]} type="email" label="Email" required />
-        <.input field={@form[:password]} type="password" label="Password" required />
+        <.input
+          field={@form[:email]}
+          type="email"
+          label="Email"
+          required
+          required
+          autocomplete="username"
+        />
+        <.input
+          field={@form[:password]}
+          type="password"
+          label="Password"
+          required
+          autocomplete="current-password"
+        />
 
         <:actions>
           <.input field={@form[:remember_me]} type="checkbox" label="Keep me logged in" />
-          <.link href={~p"/users/reset_password"} class="text-sm font-semibold">
+          <.link
+            href={~p"/users/reset_password"}
+            class={[
+              "text-sm font-semibold rounded",
+              "focus:outline-none focus-visible:ring ring-accent ring-offset-1 ring-offset-base-100"
+            ]}
+          >
             Forgot your password?
           </.link>
         </:actions>
@@ -31,7 +59,7 @@ defmodule TodoOfflineWeb.UserLoginLive do
           </.button>
         </:actions>
       </.simple_form>
-    </div>
+    </.user_auth_layout>
     """
   end
 

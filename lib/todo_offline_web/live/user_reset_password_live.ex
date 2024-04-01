@@ -5,7 +5,11 @@ defmodule TodoOfflineWeb.UserResetPasswordLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
+    <.sticky_header>
+      <.Back showTopBarOnNav href={~p"/"} />
+    </.sticky_header>
+
+    <.user_auth_layout>
       <.header class="text-center">Reset Password</.header>
 
       <.simple_form
@@ -18,23 +22,25 @@ defmodule TodoOfflineWeb.UserResetPasswordLive do
           Oops, something went wrong! Please check the errors below.
         </.error>
 
-        <.input field={@form[:password]} type="password" label="New password" required />
+        <.input
+          field={@form[:password]}
+          type="password"
+          label="New password"
+          required
+          autocomplete="off"
+        />
         <.input
           field={@form[:password_confirmation]}
           type="password"
           label="Confirm new password"
           required
+          autocomplete="off"
         />
         <:actions>
           <.button phx-disable-with="Resetting..." class="w-full">Reset Password</.button>
         </:actions>
       </.simple_form>
-
-      <p class="text-center text-sm mt-4">
-        <.link href={~p"/users/register"}>Register</.link>
-        | <.link href={~p"/users/log_in"}>Log in</.link>
-      </p>
-    </div>
+    </.user_auth_layout>
     """
   end
 

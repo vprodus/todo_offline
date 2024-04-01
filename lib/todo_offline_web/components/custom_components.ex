@@ -65,4 +65,36 @@ defmodule TodoOfflineWeb.CustomComponents do
     </html>
     """
   end
+
+  slot :inner_block, required: true
+
+  def user_auth_layout(assigns) do
+    ~H"""
+    <div class="max-w-[390px] mx-auto mb-10 px-2 md:p-0">
+      <%= render_slot(@inner_block) %>
+    </div>
+    """
+  end
+
+  slot :inner_block, required: true
+
+  def sticky_header(assigns) do
+    ~H"""
+    <script>
+      window.addEventListener("scroll", () => {
+        const stickyHeader = document.getElementById("sticky-header")
+        stickyHeader?.classList.toggle("border-b", window.scrollY > 0)
+      })
+    </script>
+
+    <div
+      id="sticky-header"
+      class="sticky top-0 left-0 w-full z-10 backdrop-blur border-neutral h-[68px]"
+    >
+      <div class="max-w-2xl mx-auto px-2 md:p-0 h-full flex items-center">
+        <%= render_slot(@inner_block) %>
+      </div>
+    </div>
+    """
+  end
 end

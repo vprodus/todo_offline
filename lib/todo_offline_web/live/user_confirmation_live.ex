@@ -5,7 +5,11 @@ defmodule TodoOfflineWeb.UserConfirmationLive do
 
   def render(%{live_action: :edit} = assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
+    <.sticky_header>
+      <.Back showTopBarOnNav href={~p"/"} />
+    </.sticky_header>
+
+    <.user_auth_layout>
       <.header class="text-center">Confirm Account</.header>
 
       <.simple_form for={@form} id="confirmation_form" phx-submit="confirm_account">
@@ -19,7 +23,7 @@ defmodule TodoOfflineWeb.UserConfirmationLive do
         <.link href={~p"/users/register"}>Register</.link>
         | <.link href={~p"/users/log_in"}>Log in</.link>
       </p>
-    </div>
+    </.user_auth_layout>
     """
   end
 

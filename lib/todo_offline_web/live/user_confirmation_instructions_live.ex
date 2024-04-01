@@ -5,7 +5,11 @@ defmodule TodoOfflineWeb.UserConfirmationInstructionsLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
+    <.sticky_header>
+      <.Back showTopBarOnNav href={~p"/"} />
+    </.sticky_header>
+
+    <.user_auth_layout>
       <.header class="text-center">
         No confirmation instructions received?
         <:subtitle>We'll send a new confirmation link to your inbox</:subtitle>
@@ -24,7 +28,7 @@ defmodule TodoOfflineWeb.UserConfirmationInstructionsLive do
         <.link href={~p"/users/register"}>Register</.link>
         | <.link href={~p"/users/log_in"}>Log in</.link>
       </p>
-    </div>
+    </.user_auth_layout>
     """
   end
 

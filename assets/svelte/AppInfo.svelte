@@ -2,13 +2,15 @@
   import { init, addMessages, getLocaleFromNavigator } from "svelte-i18n";
 
   import en from "./locales/en.json";
-  import fr from "./locales/fr.json";
+  import tr from "./locales/fr.json";
 
   addMessages("en", en);
-  addMessages("fr", fr);
+  addMessages("tr", tr);
+
+  console.log(getLocaleFromNavigator());
 
   init({
-    fallbackLocale: "fr",
+    fallbackLocale: "en",
     initialLocale: getLocaleFromNavigator(),
   });
 </script>
