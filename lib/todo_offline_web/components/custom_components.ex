@@ -11,7 +11,7 @@ defmodule TodoOfflineWeb.CustomComponents do
   def root_html(assigns) do
     ~H"""
     <!DOCTYPE html>
-    <html lang="en" class="[scrollbar-gutter:stable] overflow-y-scroll">
+    <html lang="en" class="[scrollbar-gutter:stable]">
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

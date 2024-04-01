@@ -3,9 +3,7 @@ defmodule TodoOfflineWeb.HomeHTML do
 
   def index(assigns) do
     ~H"""
-    <div class="my-10 sm:my-20">
-      <.AppInfo showAuthLinks />
-    </div>
+    <.AppInfo showAuthLinks />
     """
   end
 end
