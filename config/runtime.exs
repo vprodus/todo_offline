@@ -65,6 +65,19 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  # Set up default Signer for creating JWTs with Joken.
+  key_pem =
+    System.get_env("JWT_PRIVATE_KEY") ||
+      raise """
+      environment variable JWT_PRIVATE_KEY is missing.
+      """
+
+  config :joken,
+    default_signer: [
+      signer_alg: "EdDSA",
+      key_pem: key_pem |> String.replace(~r/\\n/, "\n")
+    ]
+
   # ## SSL Support
   #
   # To get SSL working, you will need to add the `https` key

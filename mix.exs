@@ -57,7 +57,9 @@ defmodule TodoOffline.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
-      {:live_svelte, "~> 0.13.0"}
+      {:live_svelte, "~> 0.13.0"},
+      {:req, "~> 0.4.14"},
+      {:joken, "~> 2.6"}
     ]
   end
 
