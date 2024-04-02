@@ -64,6 +64,8 @@ defmodule TodoOfflineWeb.Router do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
     end
+
+    get "/todo", AppController, :index
   end
 
   scope "/", TodoOfflineWeb do

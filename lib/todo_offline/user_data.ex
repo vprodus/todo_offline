@@ -109,6 +109,15 @@ defmodule TodoOffline.UserData do
   end
 
   @doc """
+  Same as `create_user_document/1`, but raises if the changeset is invalid.
+  """
+  def create_user_document!(attrs \\ %{}) do
+    %UserDocument{}
+    |> UserDocument.changeset(attrs)
+    |> Repo.insert!()
+  end
+
+  @doc """
   Updates a user_document.
 
   ## Examples
@@ -158,6 +167,19 @@ defmodule TodoOffline.UserData do
 
   # Yjs ____________________________________________________________________________________________
 
+  @spec get_latest_document(
+          atom()
+          | %{
+              :assigns =>
+                atom()
+                | %{
+                    :current_user => atom() | %{:id => any(), optional(any()) => any()},
+                    optional(any()) => any()
+                  },
+              optional(any()) => any()
+            },
+          any()
+        ) :: any()
   @doc """
   Get the latest document state by merging the Yjs document saved in the server
   database with the document from the client.
